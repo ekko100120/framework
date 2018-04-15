@@ -1,0 +1,5 @@
+com/mercury/proxy/Check.class
+com/mercury/proxy/ProxyFactory.class
+com/mercury/proxy/Mercury.class
+com/mercury/proxy/MenuServiceImpl.class
+com/mercury/proxy/MenuService.class
