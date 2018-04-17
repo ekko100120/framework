@@ -13,7 +13,6 @@ import java.util.Queue;
  */
 public class BinarySearchTree {
 
-
     private TreeNode root;
     int count;
 

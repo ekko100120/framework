@@ -6,35 +6,32 @@ import java.lang.reflect.Proxy;
 
 /**
  * @param :
+ * @author: kenny [411316753@qq.com]
  * @Date: 2018/4/13-14:20
  * @Description:
  * @return:
  */
 public class ProxyFactory implements InvocationHandler{
-   private Class interfaceClass;
+   private Object target;
 
-  public ProxyFactory(Class interfaceClass) {
-    this.interfaceClass = interfaceClass;
+  public ProxyFactory(Object target) {
+    this.target = target;
   }
 
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-    System.out.println();
     System.out.println(method);
     System.out.println("进行编码");
-    System.out.println("发送网络请求");
-    System.out.println("将网络请求结果进行解码并返回");
-    System.out.println("进行编码");
-    System.out.println("发送网络请求");
-    System.out.println("将网络请求结果进行解码并返回");
-
-    return null;
+    System.err.println("调用前+++++++++++++++++++++");
+    Object object=method.invoke(target,args);
+    System.err.println("调用后+++++++++++++++++++++");
+    return object;
   }
   public Object  getProxyObject(){
     System.out.println(this.toString());
-     return (Object) Proxy.newProxyInstance(
-         this.getClass().getClassLoader(),
-         new Class[]{interfaceClass},
+     return  Proxy.newProxyInstance(
+         target.getClass().getClassLoader(),
+         target.getClass().getInterfaces(),
          this
      );
   }
